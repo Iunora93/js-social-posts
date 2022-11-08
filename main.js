@@ -60,49 +60,22 @@ const postContainer = document.getElementById('container');
 
 for (let i = 0; i < posts.length; i++){
     const post = posts[i];
-    console.log(post);
-    const listPost = 
-    `
-    <div class="post">
-            <div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${post.author.image}" alt="Phil Mangione">                    
-                    </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">${post.author.name}</div>
-                        <div class="post-meta__time">${post.created}</div>
-                    </div>                    
-                </div>
-            </div>
-            <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
-            <div class="post__image">
-                <img src="${post.media}" alt="">
-            </div>
-            <div class="post__footer">
-                <div class="likes js-likes">
-                    <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
-                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                            <span class="like-button__label">Mi Piace</span>
-                        </a>
-                    </div>
-                    <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
-                    </div>
-                </div> 
-            </div>            
-    </div>
-    `;
-    console.log(listPost);
-    postContainer.innerHTML += (listPost);    
+    const listPost = document.getElementById('template-post').content.cloneNode(true);
+    listPost.querySelector('.profile-pic').innerHTML = `<img src = ${post.media}>`;
+    listPost.querySelector('.post-meta__author').innerHTML = post.author.name;
+    listPost.querySelector('.post-meta__time').innerHTML = post.created;
+    listPost.querySelector('.post__text').innerHTML = post.content;
+    listPost.querySelector('.post__image').innerHTML = `<img src = ${post.author.image}>`;
+    listPost.querySelector('.js-likes-counter').innerHTML = post.likes;
+
+    postContainer.append(listPost);    
 }
 
 
 const btnGenerator = document.querySelector(".like-button");
 
 btnGenerator.addEventListener("click", function(){
-    let likeButton = this.querySelector(".like-button__label");
+    let likeButton = document.querySelector(".like-button__label");
     likeButton.classList.add('like-button--liked');
 })
 
