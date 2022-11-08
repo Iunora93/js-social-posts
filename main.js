@@ -88,7 +88,7 @@ for (let i = 0; i < posts.length; i++){
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -101,7 +101,7 @@ for (let i = 0; i < posts.length; i++){
 
 const btnGenerator = document.querySelector(".like-button");
 
-btnGenerator.addEventListener(click, function(){
+btnGenerator.addEventListener("click", function(){
     let likeButton = this.querySelector(".like-button__label");
     likeButton.classList.add('like-button--liked');
 })
