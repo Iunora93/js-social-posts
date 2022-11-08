@@ -98,6 +98,14 @@ for (let i = 0; i < posts.length; i++){
     postContainer.innerHTML += (listPost);    
 }
 
+
+const btnGenerator = document.querySelector(".like-button");
+
+btnGenerator.addEventListener(click, function(){
+    let likeButton = this.querySelector(".like-button__label");
+    likeButton.classList.add('like-button--liked');
+})
+
 /* Descrizione
 Ricreiamo un feed social aggiungendo al layout di base fornito, il nostro script JS in cui:
 Milestone 1 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
