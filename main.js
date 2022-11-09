@@ -61,12 +61,14 @@ const postContainer = document.getElementById('container');
 for (let i = 0; i < posts.length; i++){
     const post = posts[i];
     const listPost = document.getElementById('template-post').content.cloneNode(true);
-    listPost.querySelector('.profile-pic').innerHTML = `<img src = ${post.media}>`;
+    listPost.querySelector('.profile-pic').src = post.author.image;
+    listPost.querySelector('.profile-pic').alt = post.author.name;
     listPost.querySelector('.post-meta__author').innerHTML = post.author.name;
     listPost.querySelector('.post-meta__time').innerHTML = post.created;
-    listPost.querySelector('.post__text').innerHTML = post.content;
-    listPost.querySelector('.post__image').innerHTML = `<img src = ${post.author.image}>`;
+    listPost.querySelector('.post__text').innerHTML = post.content;   
+    listPost.querySelector('.post__image > img').src = post.media;    
     listPost.querySelector('.js-likes-counter').innerHTML = post.likes;
+
 
     postContainer.append(listPost);    
 }
